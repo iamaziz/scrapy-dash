@@ -7,12 +7,16 @@ root_url = 'http://doc.scrapy.org/en/latest/'
 data = requests.get(root_url).text
 soup = BeautifulSoup(data)
 
+# get the documentation links
 page_ids = []
 for link in soup.find_all('a'):
     page_ids.append(link.get('href'))
 
 docpath = 'scrapy.docset/Contents/Resources/Documents'
 
+"""
+download scrapy dodumenation from the linked urls
+"""
 def scrape_page(page_id):
     try:
         url = root_url + page_id

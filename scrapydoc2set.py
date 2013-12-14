@@ -17,6 +17,7 @@ url = 'http://doc.scrapy.org/en/latest/'
 page = urllib2.urlopen(url)
 soup = BeautifulSoup(page)
 
+# add documentation functions to db
 for tag in soup.find_all('a'):
     name = tag.string
     path = tag.get('href')
