@@ -4,6 +4,6 @@ scrapy-dash
 Scrapy docset for Dash.
 
 See:
-	http://kapeli.com/dash
-	http://scrapy.org
+<p>http://kapeli.com/dash</p>
+<p>http://scrapy.org</p>
 
