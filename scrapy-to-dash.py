@@ -26,14 +26,14 @@ def update_db(name, path):
 
 
 def add_urls():
- 
+
   root_url = 'http://doc.scrapy.org/en/latest/'
- 
+
   # start souping index_page
   data = requests.get(root_url).text
   soup = bs(data)
 
-  # collected needed pages and their urls
+  # update db with filtered links
   for link in soup.findAll('a'):
     name = link.text.strip()
     path = link.get('href')
