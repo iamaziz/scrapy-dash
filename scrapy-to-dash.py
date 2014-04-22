@@ -15,7 +15,15 @@ urllib.urlretrieve(icon, docset_name + "/icon.png")
 
 
 def update_db(name, path):
-  typ = 'func'
+  typ = 'Section'
+  if path.startswith('topics'):
+    typ = 'func'
+  if path.startswith('intro'):
+    typ = 'Guide'
+  if path.startswith('faq.html') or path.startswith('contributing.html'):
+    typ = 'Instruction'
+
+  path = 'doc.scrapy.org/en/latest/' + path
   cur.execute("SELECT rowid FROM searchIndex WHERE path = ?", (path,))
   fetched = cur.fetchone()
   if fetched is None:
@@ -37,8 +45,7 @@ def add_urls():
   for link in soup.findAll('a'):
     name = link.text.strip()
     path = link.get('href')
-    if path is not None and name and not path.startswith('http') and not path.startswith('news.html') and not path.startswith('/en') and not path.startswith('#') and not path.startswith('irc:'):
-        path = 'doc.scrapy.org/en/latest/' + path
+    if path is not None and name and not path.startswith('http') and not path.startswith('news.html') and not path.startswith('/en') and not path.startswith('#') and not path.startswith('irc:') andnot path.startswith('//'):
         update_db(name, path)
 
 
