@@ -1,1 +1,8 @@
- <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"> <plist version="1.0"> <dict>     <key>CFBundleIdentifier</key>     <string>scrapy</string>     <key>CFBundleName</key>     <string>scrapy</string>    <key>DocSetPlatformFamily</key>    <string>scrapy</string>    <key>isDashDocset</key>    <true/>    <key>isJavaScriptEnabled</key>    <true/>    <key>dashIndexFilePath</key>    <string>doc.scrapy.org/en/latest/index.html</string></dict></plist>
+{
+	CFBundleIdentifier = Scrapy;
+	CFBundleName = Scrapy;
+	dashIndexFilePath = "doc.scrapy.org/en/latest/index.html";
+	DocSetPlatformFamily = Scrapy;
+	isDashDocset = YES;
+	isJavaScriptEnabled = YES;
+}

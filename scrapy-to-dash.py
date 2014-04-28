@@ -3,13 +3,14 @@ from bs4 import BeautifulSoup as bs
 
 
 # download html documentation
-cmdcommand = """ cd . && rm -rf scrapy.docset && mkdir -p scrapy.docset/Contents/Resources/Documents && cd scrapy.docset && httrack -%v2 -T60 -R99 --sockets=7 -%c1000 -c10 -A999999999 -%N0 --disable-security-limits -F 'Mozilla/5.0 (X11; Linux i686) AppleWebKit/535.19 (KHTML, like Gecko) Ubuntu/11.10 Chromium/18.0.1025.168' --mirror --keep-alive --robots=0 "http://doc.scrapy.org/en/latest/" -n -* +*.css +*css.php +*.ico +*/fonts/* +*.svg +*.ttf +fonts.googleapis.com* +*.woff +*.eot +*.png +*.jpg +*.gif +*.jpeg +*.js +http://doc.scrapy.org/en/latest/* -github.com* +raw.github.com* && rm -rf hts-* && mkdir -p Contents/Resources/Documents && mv -f *.* Contents/Resources/Documents/ """
+cmdcommand = """ cd . && rm -rf Scrapy.docset && mkdir -p Scrapy.docset/Contents/Resources/Documents && cd Scrapy.docset && httrack -%v2 -T60 -R99 --sockets=7 -%c1000 -c10 -A999999999 -%N0 --disable-security-limits -F 'Mozilla/5.0 (X11; Linux i686) AppleWebKit/535.19 (KHTML, like Gecko) Ubuntu/11.10 Chromium/18.0.1025.168' --mirror --keep-alive --robots=0 "http://doc.scrapy.org/en/latest/" -n -* +*.css +*css.php +*.ico +*/fonts/* +*.svg +*.ttf +fonts.googleapis.com* +*.woff +*.eot +*.png +*.jpg +*.gif +*.jpeg +*.js +http://doc.scrapy.org/en/latest/* -github.com* +raw.github.com* && rm -rf hts-* && mkdir -p Contents/Resources/Documents && mv -f *.* Contents/Resources/Documents/
+ """
 os.system(cmdcommand)
 
 
 
 # CONFIGURATION
-docset_name = 'scrapy.docset'
+docset_name = 'Scrapy.docset'
 output = docset_name + '/Contents/Resources/Documents/'
 
 # create docset directory
