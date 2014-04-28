@@ -4,7 +4,7 @@
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 
-<!-- Mirrored from doc.scrapy.org/en/latest/topics/selectors.html by HTTrack Website Copier/3.x [XR&CO'2013], Sat, 19 Apr 2014 23:02:56 GMT -->
+<!-- Mirrored from doc.scrapy.org/en/latest/topics/selectors.html by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 28 Apr 2014 05:02:51 GMT -->
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -711,17 +711,17 @@ elements. First, you would get all <tt class="docutils literal"><span class="pre
 <p>At first, you may be tempted to use the following approach, which is wrong, as
 it actually extracts all <tt class="docutils literal"><span class="pre">&lt;p&gt;</span></tt> elements from the document, not only those
 inside <tt class="docutils literal"><span class="pre">&lt;div&gt;</span></tt> elements:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">divs</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">&#39;//p&#39;</span><span class="p">)</span>  <span class="c"># this is wrong - gets all &lt;p&gt; from the whole document</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">divs</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">&#39;//p&#39;</span><span class="p">):</span>  <span class="c"># this is wrong - gets all &lt;p&gt; from the whole document</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="k">print</span> <span class="n">p</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>This is the proper way to do it (note the dot prefixing the <tt class="docutils literal"><span class="pre">.//p</span></tt> XPath):</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">divs</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">&#39;.//p&#39;</span><span class="p">)</span>  <span class="c"># extracts all &lt;p&gt; inside</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">divs</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">&#39;.//p&#39;</span><span class="p">):</span>  <span class="c"># extracts all &lt;p&gt; inside</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="k">print</span> <span class="n">p</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Another common case would be to extract all direct <tt class="docutils literal"><span class="pre">&lt;p&gt;</span></tt> children:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">divs</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">&#39;p&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">divs</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">&#39;p&#39;</span><span class="p">):</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="k">print</span> <span class="n">p</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1133,7 +1133,7 @@ though.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2008-2013, Scrapy developers.
-      Last updated on Apr 17, 2014.
+      Last updated on Apr 24, 2014.
     </p>
   </div>
 
@@ -1240,5 +1240,5 @@ though.</li>
 
 </body>
 
-<!-- Mirrored from doc.scrapy.org/en/latest/topics/selectors.html by HTTrack Website Copier/3.x [XR&CO'2013], Sat, 19 Apr 2014 23:02:56 GMT -->
+<!-- Mirrored from doc.scrapy.org/en/latest/topics/selectors.html by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 28 Apr 2014 05:02:52 GMT -->
 </html>
