@@ -18,4 +18,4 @@ __How to generate the docset:__
 Note:
 > Generating the docsest is tested on Mac OS only. If anyone gets to try it on Windows, please let me know how it goes.
 
-> This docset is not part of the official library of Dash (However, it might be included later on under Users-contribution section). To add it to your own dash library, download it scrapy.docset folder and open it with Dash.
+> This docset is now available in Dash 2.1.0, under Other docsets > User Contributed.
