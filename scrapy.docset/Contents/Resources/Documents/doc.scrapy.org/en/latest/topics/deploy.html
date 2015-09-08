@@ -1,0 +1,422 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<!-- Mirrored from doc.scrapy.org/en/latest/topics/deploy.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 08 Sep 2015 15:33:20 GMT -->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Deploying Spiders &mdash; Scrapy 1.0.3 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+
+  
+    <link rel="stylesheet" href="../../../../media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../../media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Scrapy 1.0.3 documentation" href="../index-2.html"/>
+        <link rel="next" title="AutoThrottle extension" href="autothrottle.html"/>
+        <link rel="prev" title="Ubuntu packages" href="ubuntu.html"/>
+ 
+<!-- RTD Extra Head -->
+
+
+
+  
+  <!-- 
+  Always link to the latest version, as canonical.
+  http://docs.readthedocs.org/en/latest/canonical.html
+  -->
+  <link rel="canonical" href="deploy.html" />
+  
+
+<script type="text/javascript">
+  // This is included here because other places don't have access to the pagename variable.
+  var READTHEDOCS_DATA = {
+    project: "scrapy",
+    version: "latest",
+    language: "en",
+    page: "topics/deploy",
+    builder: "sphinx",
+    theme: "sphinx_rtd_theme",
+    docroot: "/docs/",
+    
+    source_suffix: ".rst",
+    
+    api_host: "https://readthedocs.org/",
+    commit: "2d688cd94d8be79da265f330c64c6994952d32c2"
+  }
+  // Old variables
+  var doc_version = "latest";
+  var doc_slug = "scrapy";
+  var page_name = "topics/deploy";
+  var html_theme = "sphinx_rtd_theme";
+</script>
+<!-- RTD Analytics Code -->
+<!-- Included in the header because you don't have a footer block. -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-17997319-1']);
+  _gaq.push(['_trackPageview']);
+
+  // User Analytics Code
+  _gaq.push(['user._setAccount', 'UA-10231918-2']);
+  _gaq.push(['user._trackPageview']);
+  // End User Analytics Code
+
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- end RTD Analytics Code -->
+<!-- end RTD <extrahead> -->
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../index-2.html" class="icon icon-home"> Scrapy
+        
+
+        
+        </a>
+
+        
+          
+          
+          
+            <div class="version">
+              latest
+            </div>
+          
+        
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="http://doc.scrapy.org/en/latest/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro/overview.html">Scrapy at a glance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/install.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/tutorial.html">Scrapy Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/examples.html">Examples</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="commands.html">Command line tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spiders.html">Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selectors.html">Selectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="items.html">Items</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loaders.html">Item Loaders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell.html">Scrapy shell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="item-pipeline.html">Item Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feed-exports.html">Feed exports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="request-response.html">Requests and Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="link-extractors.html">Link Extractors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">Stats Collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="email.html">Sending e-mail</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telnetconsole.html">Telnet Console</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webservice.html">Web Service</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debug.html">Debugging Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contracts.html">Spiders Contracts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="practices.html">Common Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="broad-crawls.html">Broad Crawls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="firefox.html">Using Firefox for scraping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="firebug.html">Using Firebug for scraping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="leaks.html">Debugging memory leaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="media-pipeline.html">Downloading and processing files and images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ubuntu.html">Ubuntu packages</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Deploying Spiders</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#deploying-to-a-scrapyd-server">Deploying to a Scrapyd Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#deploying-to-scrapy-cloud">Deploying to Scrapy Cloud</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="autothrottle.html">AutoThrottle extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jobs.html">Jobs: pausing and resuming crawls</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="downloader-middleware.html">Downloader Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spider-middleware.html">Spider Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extensions.html">Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Core API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="signals.html">Signals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exporters.html">Item Exporters</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../news.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing to Scrapy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../versioning.html">Versioning and API Stability</a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index-2.html">Scrapy</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index-2.html">Docs</a> &raquo;</li>
+      
+    <li>Deploying Spiders</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="https://github.com/scrapy/scrapy/blob/1.0/docs/topics/deploy.rst" class="fa fa-github"> Edit on GitHub</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="deploying-spiders">
+<span id="topics-deploy"></span><h1>Deploying Spiders<a class="headerlink" href="#deploying-spiders" title="Permalink to this headline">¶</a></h1>
+<p>This section describes the different options you have for deploying your Scrapy
+spiders to run them on a regular basis. Running Scrapy spiders in your local
+machine is very convenient for the (early) development stage, but not so much
+when you need to execute long-running spiders or move spiders to run in
+production continously. This is where the solutions for deploying Scrapy
+spiders come in.</p>
+<p>Popular choices for deploying Scrapy spiders are:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#deploy-scrapyd"><span>Scrapyd</span></a> (open source)</li>
+<li><a class="reference internal" href="#deploy-scrapy-cloud"><span>Scrapy Cloud</span></a> (cloud-based)</li>
+</ul>
+<div class="section" id="deploying-to-a-scrapyd-server">
+<span id="deploy-scrapyd"></span><h2>Deploying to a Scrapyd Server<a class="headerlink" href="#deploying-to-a-scrapyd-server" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/scrapy/scrapyd">Scrapyd</a> is an open source application to run Scrapy spiders. It provides
+a server with HTTP API, capable of running and monitoring Scrapy spiders.</p>
+<p>To deploy spiders to Scrapyd, you can use the scrapyd-deploy tool provided by
+the <a class="reference external" href="https://github.com/scrapy/scrapyd-client">scrapyd-client</a> package. Please refer to the <a class="reference external" href="http://scrapyd.readthedocs.org/en/latest/deploy.html">scrapyd-deploy
+documentation</a> for more information.</p>
+<p>Scrapyd is maintained by some of the Scrapy developers.</p>
+</div>
+<div class="section" id="deploying-to-scrapy-cloud">
+<span id="deploy-scrapy-cloud"></span><h2>Deploying to Scrapy Cloud<a class="headerlink" href="#deploying-to-scrapy-cloud" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://scrapinghub.com/scrapy-cloud/">Scrapy Cloud</a> is a hosted, cloud-based service by <a class="reference external" href="http://scrapinghub.com/">Scrapinghub</a>,
+the company behind Scrapy.</p>
+<p>Scrapy Cloud removes the need to setup and monitor servers
+and provides a nice UI to manage spiders and review scraped items,
+logs and stats.</p>
+<p>To deploy spiders to Scrapy Cloud you can use the <a class="reference external" href="http://doc.scrapinghub.com/shub.html">shub</a> command line tool.
+Please refer to the <a class="reference external" href="http://doc.scrapinghub.com/scrapy-cloud.html">Scrapy Cloud documentation</a> for more information.</p>
+<p>Scrapy Cloud is compatible with Scrapyd and one can switch between
+them as needed - the configuration is read from the <code class="docutils literal"><span class="pre">scrapy.cfg</span></code> file
+just like <code class="docutils literal"><span class="pre">scrapyd-deploy</span></code>.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="autothrottle.html" class="btn btn-neutral float-right" title="AutoThrottle extension" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ubuntu.html" class="btn btn-neutral" title="Ubuntu packages" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2008-2015, Scrapy developers.
+      
+        <span class="commit">
+          Revision <code>2d688cd94d8be79da265f330c64c6994952d32c2</code>.
+        </span>
+      
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="../index.html">latest</a></dd>
+        
+          <dd><a href="http://doc.scrapy.org/en/stable/">stable</a></dd>
+        
+          <dd><a href="http://doc.scrapy.org/en/master/">master</a></dd>
+        
+          <dd><a href="http://doc.scrapy.org/en/1.0/">1.0</a></dd>
+        
+          <dd><a href="http://doc.scrapy.org/en/0.24/">0.24</a></dd>
+        
+          <dd><a href="http://doc.scrapy.org/en/0.22/">0.22</a></dd>
+        
+          <dd><a href="http://doc.scrapy.org/en/0.20/">0.20</a></dd>
+        
+          <dd><a href="http://doc.scrapy.org/en/0.18/">0.18</a></dd>
+        
+          <dd><a href="http://doc.scrapy.org/en/0.16/">0.16</a></dd>
+        
+          <dd><a href="http://doc.scrapy.org/en/0.14/">0.14</a></dd>
+        
+          <dd><a href="http://doc.scrapy.org/en/0.12/">0.12</a></dd>
+        
+          <dd><a href="http://doc.scrapy.org/en/0.10.3/">0.10.3</a></dd>
+        
+          <dd><a href="http://doc.scrapy.org/en/0.9/">0.9</a></dd>
+        
+          <dd><a href="http://doc.scrapy.org/en/0.8/">0.8</a></dd>
+        
+          <dd><a href="http://doc.scrapy.org/en/0.7/">0.7</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="http://readthedocs.org/projects/scrapy/downloads/pdf/latest/">pdf</a></dd>
+        
+          <dd><a href="http://readthedocs.org/projects/scrapy/downloads/htmlzip/latest/">htmlzip</a></dd>
+        
+          <dd><a href="http://readthedocs.org/projects/scrapy/downloads/epub/latest/">epub</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="http://readthedocs.org/projects/scrapy/?fromdocs=scrapy">Project Home</a>
+          </dd>
+          <dd>
+            <a href="http://readthedocs.org/builds/scrapy/?fromdocs=scrapy">Builds</a>
+          </dd>
+      </dl>
+      <hr/>
+      Free document hosting provided by <a href="http://www.readthedocs.org/">Read the Docs</a>.
+
+    </div>
+  </div>
+
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.3',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../../media.readthedocs.org/javascript/jquery/jquery-2.0.3.min.js"></script>
+      <script type="text/javascript" src="../../../../media.readthedocs.org/javascript/jquery/jquery-migrate-1.2.1.min.js"></script>
+      <script type="text/javascript" src="../../../../media.readthedocs.org/javascript/underscore.js"></script>
+      <script type="text/javascript" src="../../../../media.readthedocs.org/javascript/doctools.js"></script>
+      <script type="text/javascript" src="../../../../media.readthedocs.org/javascript/readthedocs-doc-embed.js"></script>
+
+  
+
+  
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+
+<!-- Mirrored from doc.scrapy.org/en/latest/topics/deploy.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 08 Sep 2015 15:33:20 GMT -->
+</html>
